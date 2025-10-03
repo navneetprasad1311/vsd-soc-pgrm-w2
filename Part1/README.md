@@ -301,9 +301,9 @@ Designing a System-on-Chip (SoC) transforms an idea into a functional chip throu
 
 ---
 
-For more details, visit the [VSDBabySoC GitHub repository](https://github.com/manili/VSDBabySoC)
-
 ![vsd_babysoc](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/vsd_babysoc.png)
+
+For more details, visit the [VSDBabySoC GitHub repository](https://github.com/manili/VSDBabySoC)
 
 ---
 
