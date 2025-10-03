@@ -68,7 +68,7 @@ VSDBabySoC/
 
 These files hold the RTL implementation of the BabySoC, defining its core modules and functional behavior.
 
-- **avsddac.v** – Implements the DAC (Digital-to-Analog Converter) module of the SoC.  
+- **`avsddac.v`** – Implements the DAC (Digital-to-Analog Converter) module of the SoC.  
     ```verilog
     module avsddac (
         OUT,
@@ -142,7 +142,7 @@ These files hold the RTL implementation of the BabySoC, defining its core module
         - `OUT`: Analog output signal.
 
 
-- **avsdpll.v** – Implements the PLL (Phase-Locked Loop) module for clock management.
+- **`avsdpll.v`** – Implements the PLL (Phase-Locked Loop) module for clock management.
 
     ```verilog
     module avsdpll (
@@ -194,7 +194,7 @@ These files hold the RTL implementation of the BabySoC, defining its core module
         - `CLK`: A stable clock signal for synchronizing the core and other modules.
 
 
-- **rvmyth.tlv** - This code implements a behavioral functional model of a RISC-V CPU core, handling instruction decoding, ALU operations, register file access, memory operations, and branch/jump logic for simulation and verification purposes. 
+- **`rvmyth.tlv`** - This code implements a behavioral functional model of a RISC-V CPU core, handling instruction decoding, ALU operations, register file access, memory operations, and branch/jump logic for simulation and verification purposes. 
 
     <pre>
         m4_include_lib(['https://raw.githubusercontent.com/shivanishah269/risc-v-core/master/FPGA_Implementation/riscv_shell_lib.tlv'])
@@ -233,7 +233,7 @@ These files hold the RTL implementation of the BabySoC, defining its core module
     - Outputs:
         - `OUT`: A 10-bit digital signal representing processed data to be sent to the DAC.
 
-- **vsdbabysoc.v** – Top-level module that integrates all submodules to form the complete BabySoC.  
+- **`vsdbabysoc.v`** – Top-level module that integrates all submodules to form the complete BabySoC.  
 
     ```verilog
     module vsdbabysoc (
