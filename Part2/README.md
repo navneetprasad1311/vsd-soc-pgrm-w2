@@ -62,6 +62,7 @@ VSDBabySoC/
 
 ![fstruct](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/fstruct.png)
 
+---
 
 ### **Verilog Source Files (`*.v`)**:  
 
@@ -297,4 +298,3 @@ This testbench exists specifically for the **BabySoC** and is used to verify the
 Depending on the simulation setup, the generated waveform files `pre_synth_sim.vcd` or `post_synth_sim.vcd` capture signal activity for the BabySoC design. These files can be opened in `GTKWave` to visualize and analyze the behavior of the SoC during simulation.
 
 ---
-
