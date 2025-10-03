@@ -46,6 +46,20 @@ This helps in navigating the design, identifying modules, and preparing for simu
 
 File Structure:
 
+```
+VSDBabySoC/
+├── LICENSE
+├── Makefile
+├── README.md
+├── images/
+└── src/
+    ├── module/
+    │   ├── avsddac.v
+    │   ├── avsdpll.v
+    │   ├── rvmyth.tlv
+    │   └── vsdbabysoc.v
+```
+
 ![fstruct](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/fstruct.png)
 
 
