@@ -2,7 +2,6 @@
 
 `28/09/2025` to `04/10/2025`
 
-This week focuses on taking the VSDBabySoC RISC‑V core (RVMYTH) from functional modeling to pre-tapeout readiness, simulating interactions, and preparing for RTL synthesis.
 
 ## Objectives
 
