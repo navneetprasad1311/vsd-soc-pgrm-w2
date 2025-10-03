@@ -105,7 +105,7 @@ The **interconnect** is the backbone that ties together the CPU, memory, and per
   - Each peripheral and memory block is mapped to a specific address space.  
   - Arbitration logic decides which master gets bus access when multiple requests occur.  
 
-![soc_block]()
+![soc_block](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/soc_block.png)
 
 ---
 
@@ -219,7 +219,7 @@ Designing a System-on-Chip (SoC) transforms an idea into a functional chip throu
 - Test real hardware with software and peripherals.  
 - Debug, optimize, and deploy in production.  
 
-![soc_design]()
+![soc_design](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/soc_design.png)
 
 ---
 
@@ -231,7 +231,7 @@ Designing a System-on-Chip (SoC) transforms an idea into a functional chip throu
 - **Broadcom BCM2711 (Raspberry Pi 4):** Quad-core ARM CPU + VideoCore GPU, popular in education and prototyping.  
 - **ESP32:** Low-cost dual-core SoC with Wi-Fi + Bluetooth, widely used in IoT projects.  
 
-![poplr_socs]()
+![poplr_socs](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/poplr_socs.png)
 
 ---
 
@@ -277,7 +277,7 @@ Designing a System-on-Chip (SoC) transforms an idea into a functional chip throu
 - Drives the DAC output with processed digital data.  
 - Designed as a **learning tool**, focusing on CPU fundamentals.  
 
-![rvmyth]()
+![rvmyth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/rvmyth.png)
 
 ---
 
@@ -286,7 +286,7 @@ Designing a System-on-Chip (SoC) transforms an idea into a functional chip throu
 - Synchronizes the RVMYTH processor and other digital components.  
 - Modeled in Verilog using the `real` data type to approximate analog clock behavior in simulation.  
 
-![pll]()
+![pll](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/pll.png)
 
 ---
 
@@ -296,13 +296,13 @@ Designing a System-on-Chip (SoC) transforms an idea into a functional chip throu
 - Modeled in Verilog using `real` to represent continuous analog values.  
 - Simplifies analog behavior for educational simulation purposes.  
 
-![dac]()
+![dac](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/dac.png)
 
 ---
 
 For more details, visit the [VSDBabySoC GitHub repository](https://github.com/manili/VSDBabySoC)
 
-![vsd_babysoc]()
+![vsd_babysoc](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/Images/vsd_babysoc.png)
 
 ---
 
@@ -321,8 +321,6 @@ For more details, visit the [VSDBabySoC GitHub repository](https://github.com/ma
 - **Focus on Fundamentals:**  
   - Emphasizes understanding CPU-memory-peripheral communication, bus arbitration, and basic digital-to-analog interfacing.  
   - Encourages learning step-by-step, reinforcing key concepts like instruction execution, data flow, and I/O operations.  
-
-![babysoc]()
 
 ---
 
