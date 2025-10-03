@@ -1,5 +1,7 @@
 # BabySoC: Fundamentals 
 
+In this document, we introduce the fundamentals of BabySoC, a simplified educational System-on-Chip designed to teach core SoC concepts, CPU-memory-peripheral interaction, and functional modeling.
+
 
 ## Table of Contents
 
