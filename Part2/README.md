@@ -6,7 +6,22 @@ This documentation covers the **hands-on functional modeling of the BabySoC**, f
 
 ## Table of Contents
 
-
+1. [Cloning the VSDBabySoC Repository](#cloning-the-vsdbabysoc-repository)  
+2. [Analysing the Contents of VSDBabySoC](#analysing-the-contents-of-vsdbabysoc)  
+   - Verilog Source Files (`*.v`)  
+     - `avsddac.v` – DAC Module  
+     - `avsdpll.v` – PLL Module  
+     - `rvmyth.tlv` – RISC-V CPU Core  
+     - `vsdbabysoc.v` – Top-Level Integration Module  
+   - Testbench (`testbench.v`)  
+3. [Pre-synthesis Simulation of VSDBabySoC](#pre-synthesis-simulation-of-vsdbabysoc)  
+   - Installing Dependencies  
+   - Compiling `rvmyth.tlv` with Sandpiper  
+   - Compiling Source Files with Icarus Verilog  
+   - Viewing Waveforms with GTKWave
+4. [Signal Analysis](#signal-analysis)  
+   - Observed Signals (`CLK`, `reset`, `OUT`, `RV_TO_DAC[9:0]`, `OUT (real)`)  
+5. [Summary](#summary)
 
 ---
 
@@ -358,14 +373,22 @@ gtwave pre_synth_sim.vcd
 
 ![waveform](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveform.png)
 
-*Signal Analysis* :
+---
+
+## Signal Analysis :
 
 In this waveform, the following signals are observed:
 
 - `CLK`: The input clock signal for the RVMYTH core, sourced from the PLL.
 - `reset`: The input reset signal for the RVMYTH core, provided by an external source.
-- `OUT`: The output signal of the VSDBabySoC module, which originates from the DAC. Due to simulation limitations, it behaves as a digital signal, although it is a Analog signal.
+- `OUT`: The output signal of the VSDBabySoC module, which originates from the DAC. Due to simulation limitations, it behaves as a Digital signal, although it is a Analog signal.
 - `RV_TO_DAC[9:0]`: A 10-bit output from the RVMYTH core, originally intended for the DAC.
 - `OUT (real)`: A real-type wire representing the DAC output, capable of simulating analog values, and originally sourced from the DAC.
+
+---
+
+## Summary
+
+VSDBabySoC is a simplified, educational SoC designed to teach CPU-memory-peripheral interaction and functional modeling. It includes a minimal RVMYTH CPU, memory, basic peripherals, a simple bus, PLL, and 10-bit DAC. Functional modeling allows simulation and verification of system behavior before RTL, providing a hands-on, safe platform to learn core SoC concepts.
 
 ---
