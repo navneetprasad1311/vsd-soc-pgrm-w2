@@ -368,10 +368,10 @@ _Waveform_:
 
 _Analysis_ :
 
-- D = 3FE -> Dext = 1022
-- OUT = VREFL + ( (Dext​ / 1023)  * (VREFH−VREFL) )
-- OUT = 0 + (1022 / 1023) * 3.3 ≈ 3.2968 V
-- Waveform: OUT ≈ 3.297 V while D stays at 3FE
+- `D` = _3FE_ -> Dext = 1022
+- `OUT` = VREFL + ( (Dext​ / 1023)  * (VREFH−VREFL) )
+- `OUT` = 0 + (1022 / 1023) * 3.3 ≈ 3.2968 V
+- Waveform: `OUT` ≈ 3.297 V while `D` stays at _3FE_
 - Demonstrates DAC step behavior near full scale
 
 ---
@@ -399,12 +399,12 @@ _Waveform_:
 
 _Analysis_ :
 
-- REF: input clock, slower reference signal
-- Each rising edge of REF recalculates refpd (REF period)
-- CLK: output clock, toggles continuously when ENb_VCO = 1
-- CLK frequency = 8 × REF frequency (since period = refpd / 8)
-- When ENb_VCO = 0 → CLK forced to 0
-- When ENb_VCO = X → CLK becomes X (unknown)
+- `REF`: input clock, slower reference signal
+- Each rising edge of `REF` recalculates `refpd` (`REF` period)
+- `CLK`: output clock, toggles continuously when `ENb_VCO` = 1
+- `CLK` frequency = 8 × `REF` frequency (since period = `refpd` / 8)
+- When `ENb_VCO` = 0 → `CLK` forced to 0
+- When `ENb_VCO` = `X` → `CLK` becomes `X` (unknown)
 
 ---
 
@@ -432,9 +432,9 @@ _Waveform_:
 
 _Analysis_ :
 
-- CLK     : Provides timing for the core.
-- RESETn  : Initializes core to known state.
-- OUT     : 10-bit Register output.
+- `CLK`     : Provides timing for the core.
+- `reset`  : Initializes core to known state.
+- `OUT`     : 10-bit Register output.
 
 ---
 
@@ -569,13 +569,10 @@ setundef -zero
 clean -purge
 rename -enumerate
 ```
-> [!TIP]
-> flatten          : Remove hierarchy, make a flat netlist
-
-> setundef -zero   : Replace undefined signals with 0
-
-> clean -purge     : Delete unused/duplicate logic
-
+> [!Note]
+> flatten          : Remove hierarchy, make a flat netlist \
+> setundef -zero   : Replace undefined signals with 0 \
+> clean -purge     : Delete unused/duplicate logic \
 > rename -enumerate: Systematically rename nets and cells
 
 To check the statistics of the synthesised design run,
@@ -687,10 +684,8 @@ iverilog -o ~/Documents/Verilog/Labs/vsdbabysoc_synth.vvp -DPOST_SYNTH_SIM -DFUN
 ```
 
 > [!Note]
-> `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode.    
-
-> `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode.       
-
+> `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode. \
+> `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode. \      
 > `-DUNIT_DELAY=#1`  | Defines the macro `UNIT_DELAY` with value `#1` for unit delay parameterization in simulation. 
 
 
