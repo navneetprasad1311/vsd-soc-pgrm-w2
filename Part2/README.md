@@ -54,10 +54,14 @@ VSDBabySoC/
 ├── images/
 └── src/
     ├── module/
-       ├── avsddac.v
-       ├── avsdpll.v
-       ├── rvmyth.tlv
-       └── vsdbabysoc.v
+    |  ├── avsddac.v
+    |  ├── avsdpll.v
+    |  ├── rvmyth.tlv
+    |  └── vsdbabysoc.v
+    ├── include/
+        ├── sandpiper.vh
+        ├── sandpiper_gen.vh
+...
 ```
 
 ![fstruct](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/fstruct.png)
@@ -296,5 +300,69 @@ These files hold the RTL implementation of the BabySoC, defining its core module
 This testbench exists specifically for the **BabySoC** and is used to verify the functionality of the complete design. It provides the necessary input stimuli, monitors outputs, and generates waveforms for simulation using `GTKWave`. Essentially, it allows functional testing of BabySoC’s instruction execution, ALU operations, register file, and memory interactions in a controlled simulation environment.
 
 Depending on the simulation setup, the generated waveform files `pre_synth_sim.vcd` or `post_synth_sim.vcd` capture signal activity for the BabySoC design. These files can be opened in `GTKWave` to visualize and analyze the behavior of the SoC during simulation.
+
+---
+
+## Simulation of VSDBabySoC
+
+Before compilation of Verilog source files, the `rvmyth.tlv` file must be compiled to a `.v` file through **sandpaper**
+
+Make sure to install other dependencies to ensure bugfree compilation by following the below commands.
+
+```bash
+sudo apt install make python python3 python3-pip git iverilog gtkwave docker.io
+cd ~
+pip3 install pyyaml click sandpiper-saas
+```
+and to run **sandpaper** and compile the `rvmyth.tlv` file, use
+
+```bash
+python3 -m sandpiper -i ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.tlv -o rvmyth.v  --bestsv --noline -p verilog --outdir ~/Documents/Verilog/Labs/VSDBabySoC/src/module
+```
+
+This command stores the compiled `rvmyth.v` and `rvmyth_gen.v` files inside `~/Documents/Verilog/Labs/VSDBabySoC/src/module`.
+
+![sandpaper]()
+
+Compilation of the source files are done through `iverilog` by using the following commands,
+
+```bash
+iverilog -o ~/Documents/Verilog/Labs/pre_synth_sim.vvp -DPRE_SYNTH_SIM \
+    -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/include -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/module \
+    ~/Documents/Verilog/Labs/VSDBabySoC/src/module/testbench.v
+```
+
+> [!Note]
+> -**o** `Output File (.vvp)`, to specify where the compiled file must be stored.
+> -**DPRE_SYNTH_SIM**, enable pre-synthesis simulation mode via macro (set inside the testbench).
+> -**I** `Source Directory`, to specify the directory where verilog files that contains submodules are stored.
+> **../testbench.v**, testbench file (drives the design).
+> Clearly specify the directories, and ensure that the mentioned files are actually present in those locations.
+
+To view the waveform,
+
+```bash
+cd ..
+vvp pre_synth_sim.vvp
+gtwave pre_synth_sim.vcd
+```
+
+*Workflow* :
+
+![workflow]()
+
+*Waveform* :
+
+![waveform]()
+
+*Analysis* :
+
+In this waveform, the following signals are observed:
+
+- `CLK`: The input clock signal for the RVMYTH core, sourced from the PLL.
+- `reset`: The input reset signal for the RVMYTH core, provided by an external source.
+- `OUT`: The output signal of the VSDBabySoC module, which originates from the DAC. Due to simulation limitations, it behaves as a digital signal, although it is a Analog signal.
+- `RV_TO_DAC[9:0]`: A 10-bit output from the RVMYTH core, originally intended for the DAC.
+- `OUT (real)`: A real-type wire representing the DAC output, capable of simulating analog values, and originally sourced from the DAC.
 
 ---
