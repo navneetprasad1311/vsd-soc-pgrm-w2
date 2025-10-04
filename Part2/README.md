@@ -328,6 +328,8 @@ Depending on the simulation setup, the generated waveform files `pre_synth_sim.v
 
 ---
 
+**Sandpiper compilation of `rymth.tlv`**
+
 Before compiling the Verilog source files, the `rvmyth.tlv` file must first be converted to a `.v` file using **sandpiper**.
 
 Ensure that all required dependencies are installed to avoid compilation issues:
@@ -352,6 +354,8 @@ This command stores the compiled `rvmyth.v` and `rvmyth_gen.v` files inside `~/D
 ## RTL Simulation of Modules
 
 **`avsddac.v`**
+
+_Simulation_ :
 
 ```bash
 iverilog -o ~/Documents/Verilog/Labs/avsddac.vvp ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsddac.v ~/Documents/Verilog/Labs/tb_avsddac.v
@@ -384,6 +388,8 @@ _Analysis_ :
 
 **`avsdpll.v`**
 
+_Simulation_ :
+
 ```bash
 iverilog -o ~/Documents/Verilog/Labs/avsdpll.vvp ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsdpll.v ~/Documents/Verilog/Labs/tb_avsdpll.v
 ```
@@ -415,6 +421,8 @@ _Analysis_ :
 ---
 
 **`rvmyth.v`**
+
+_Simulation_ :
 
 ```bash
 iverilog -o ~/Documents/Verilog/Labs/rvmyth.vvp -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/include -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/module  ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.v ~/Documents/Verilog/Labs/tb_rvmyth.v ~/Documents/Verilog/Labs/VSDBabySoC/src/module/clk_gate.v
