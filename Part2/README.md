@@ -573,12 +573,14 @@ clean -purge
 rename -enumerate
 ```
 > [!TIP]
->
 
-- flatten          : Remove hierarchy, make a flat netlist
-- setundef -zero   : Replace undefined signals with 0
-- clean -purge     : Delete unused/duplicate logic
-- rename -enumerate: Systematically rename nets and cells
+> flatten          : Remove hierarchy, make a flat netlist
+
+> setundef -zero   : Replace undefined signals with 0
+
+> clean -purge     : Delete unused/duplicate logic
+
+> rename -enumerate: Systematically rename nets and cells
 
 To check the statistics of the synthesised design run,
 
@@ -689,13 +691,12 @@ iverilog -o ~/Documents/Verilog/Labs/vsdbabysoc_synth.vvp -DPOST_SYNTH_SIM -DFUN
 ```
 
 > [!Note]
->
 
-| Command / Flag     | Description                                                                                   |
-|------------------  | --------------------------------------------------------------------------------------------- |
-| `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode.                  |
-| `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode.                          |
-| `-DUNIT_DELAY=#1`  | Defines the macro `UNIT_DELAY` with value `#1` for unit delay parameterization in simulation. |
+> `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode.    
+
+> `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode.       
+
+> `-DUNIT_DELAY=#1`  | Defines the macro `UNIT_DELAY` with value `#1` for unit delay parameterization in simulation. 
 
 
 Then, to view the waveform,
@@ -724,6 +725,6 @@ _Waveform:_
 
 ## Summary
 
-VSDBabySoC is a simplified, educational SoC designed to teach CPU-memory-peripheral interaction and functional modeling. It includes a minimal RVMYTH CPU, memory, basic peripherals, a simple bus, PLL, and 10-bit DAC. Functional modeling allows simulation and verification of system behavior before RTL, providing a hands-on, safe platform to learn core SoC concepts.
+VSDBabySoC is a compact system-on-chip that demonstrates core SoC fundamentals and functional modeling. It integrates a CPU, clock management via a PLL, and a DAC to showcase complete data flow from computation to output. The design emphasizes module integration, signal behavior, and timing, enabling simulation and verification of system functionality using Icarus Verilog and waveform analysis with GTKWave. Both pre- and post-synthesis simulations validate the design’s operation, illustrating how functional modeling bridges theoretical concepts with practical SoC implementation
 
 ---
