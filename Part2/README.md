@@ -398,7 +398,7 @@ iverilog -o ~/Documents/Verilog/Labs/avsdpll.vvp ~/Documents/Verilog/Labs/VSDBab
 ```bash
 cd ~/Documents/Verilog/Labs
 vvp avsdpll.vvp
-gtkwave tb_avsdpll.vcd
+gtkwave tb_pll.vcd
 ```
 
 _Workflow_ :
