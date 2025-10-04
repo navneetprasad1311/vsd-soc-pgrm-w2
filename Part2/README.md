@@ -374,6 +374,8 @@ _Analysis_ :
 - Waveform: OUT ≈ 3.297 V while D stays at 3FE
 - Demonstrates DAC step behavior near full scale
 
+---
+
 **`avsdpll.v`**
 
 ```bash
@@ -404,6 +406,8 @@ _Analysis_ :
 - When ENb_VCO = 0 → CLK forced to 0
 - When ENb_VCO = X → CLK becomes X (unknown)
 
+---
+
 **`rvmyth.v`**
 
 ```bash
@@ -431,6 +435,7 @@ _Analysis_ :
 - RESETn  : Initializes core to known state.
 - OUT     : 10-bit Register output.
 
+---
 
 ## Pre-synthesis Simulation of VSDBabySoC
 
@@ -477,6 +482,229 @@ In this waveform, the following signals are observed:
 - `OUT`: The output signal of the VSDBabySoC module, which originates from the DAC. Due to simulation limitations, it behaves as a Digital signal, although it is a Analog signal.
 - `RV_TO_DAC[9:0]`: A 10-bit output from the RVMYTH core, originally intended for the DAC.
 - `OUT (real)`: A real-type wire representing the DAC output, capable of simulating analog values, and originally sourced from the DAC.
+
+---
+
+## Post-synthesis Simulation of VSDBabySoc
+
+_Synthesis_ :
+
+Synthesis requires the header files essential for the `rvmyth` module, \
+these are `sp_verilog.vh`, `sandpiper.vh`, `sandpiper_gen.vh`
+
+`sp_verilog.vh` – includes core Verilog macros and parameter definitions  
+
+`sandpiper.vh` – defines integration-specific settings used by SandPiper  
+
+`sandpiper_gen.vh` – contains tool-generated parameters and configuration values  
+
+These files need to be present in the working directory of `yosys` inorder to ensure error free synthesis. This is done using the following commands,
+
+```bash
+cd ~/Documents/Verilog/Labs/VSDBabySoC
+cp -r src/include/sp_verilog.vh .
+cp -r src/include/sandpiper.vh .
+cp -r src/include/sandpiper_gen.vh .
+```
+
+Now inside the `../VSDBabySoC` folder, run `yosys`.
+
+```bash
+yosys
+```
+
+In `yosys`, perform the following commands to read the required verilog files.
+
+```bash
+read_verilog src/module/vsdbabysoc.v 
+read_verilog -I ~/Documents/Verilog/Labs/VSDBabySoC/src/include/ ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.v
+read_verilog -I ~/Documents/Verilog/Labs/VSDBabySoC/src/include/ ~/Documents/Verilog/Labs/VSDBabySoC/src/module/clk_gate.v
+```
+
+Then, the liberty files,
+
+```bash
+read_liberty -lib ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/avsdpll.lib 
+read_liberty -lib ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/avsddac.lib 
+read_liberty -lib ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+Synthesize `vsdbabysoc`, specifying it as the top module,
+
+```bash
+synth -top vsdbabysoc
+```
+
+Convert D Flip-Flops into equivalent Standard Cell instances by,
+
+```bash
+dfflibmap -liberty ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+Perform Optimization and Technology mapping using the following commands,
+
+```bash
+opt
+abc -liberty ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
+```
+
+> [!TIP]
+
+| Command        | Purpose                                                                     |
+| -------------- | --------------------------------------------------------------------------- |
+| `strash`       | Structural hashing — converts logic network to an AIG (And-Inverter Graph). |
+| `scorr`        | Sequential redundancy removal — detects equivalent registers.               |
+| `ifraig`       | Combinational equivalence simplification.                                   |
+| `retime`       | Moves flip-flops for timing optimization.                                   |
+| `{D}`          | Placeholder or marker for design partition (used internally by Yosys/ABC).  |
+| `strash`       | Re-run structural hashing after retiming.                                   |
+| `dch,-f`       | Performs combinational optimization (don’t-care-based).                     |
+| `map,-M,1,{D}` | Maps the logic to gates in the provided `.lib` standard cell library.       |
+
+
+Then, conduct final optimisations and clean-up through,
+
+```bash
+flatten
+setundef -zero
+clean -purge
+rename -enumerate
+```
+> [!TIP]
+
+- flatten          : Remove hierarchy, make a flat netlist
+- setundef -zero   : Replace undefined signals with 0
+- clean -purge     : Delete unused/duplicate logic
+- rename -enumerate: Systematically rename nets and cells
+
+To check the statistics of the synthesised design run,
+
+```bash
+stat
+```
+
+<pre>
+
+=== vsdbabysoc ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     4740 wires
+     6214 wire bits
+     4740 public wires
+     6214 public wire bits
+        7 ports
+        7 port bits
+     5924 cells
+        8   $scopeinfo
+        1   avsddac
+        1   avsdpll
+       10   sky130_fd_sc_hd__a2111oi_0
+        1   sky130_fd_sc_hd__a211o_2
+       26   sky130_fd_sc_hd__a211oi_1
+        4   sky130_fd_sc_hd__a21boi_0
+        1   sky130_fd_sc_hd__a21o_2
+      667   sky130_fd_sc_hd__a21oi_1
+        1   sky130_fd_sc_hd__a221o_2
+      167   sky130_fd_sc_hd__a221oi_1
+        3   sky130_fd_sc_hd__a22o_2
+      119   sky130_fd_sc_hd__a22oi_1
+        4   sky130_fd_sc_hd__a311oi_1
+        1   sky130_fd_sc_hd__a31o_2
+      346   sky130_fd_sc_hd__a31oi_1
+        2   sky130_fd_sc_hd__a32oi_1
+       21   sky130_fd_sc_hd__a41oi_1
+       11   sky130_fd_sc_hd__and2_2
+        1   sky130_fd_sc_hd__and3_2
+      597   sky130_fd_sc_hd__clkinv_1
+     1144   sky130_fd_sc_hd__dfxtp_1
+        1   sky130_fd_sc_hd__lpflow_inputiso0p_1
+       13   sky130_fd_sc_hd__mux2i_1
+      848   sky130_fd_sc_hd__nand2_1
+      249   sky130_fd_sc_hd__nand3_1
+        1   sky130_fd_sc_hd__nand3b_1
+       44   sky130_fd_sc_hd__nand4_1
+      404   sky130_fd_sc_hd__nor2_1
+       34   sky130_fd_sc_hd__nor3_1
+        2   sky130_fd_sc_hd__nor4_1
+        1   sky130_fd_sc_hd__o2111a_1
+       21   sky130_fd_sc_hd__o2111ai_1
+        1   sky130_fd_sc_hd__o211a_1
+       49   sky130_fd_sc_hd__o211ai_1
+        6   sky130_fd_sc_hd__o21a_1
+      867   sky130_fd_sc_hd__o21ai_0
+        1   sky130_fd_sc_hd__o21ba_2
+       18   sky130_fd_sc_hd__o21bai_1
+        7   sky130_fd_sc_hd__o221ai_1
+      154   sky130_fd_sc_hd__o22ai_1
+        1   sky130_fd_sc_hd__o2bb2ai_1
+        2   sky130_fd_sc_hd__o311ai_0
+        3   sky130_fd_sc_hd__o31ai_1
+        1   sky130_fd_sc_hd__o32ai_1
+        1   sky130_fd_sc_hd__o41ai_1
+       12   sky130_fd_sc_hd__or2_2
+        1   sky130_fd_sc_hd__or3_2
+        1   sky130_fd_sc_hd__or4_2
+       13   sky130_fd_sc_hd__xnor2_1
+       32   sky130_fd_sc_hd__xor2_1
+</pre>
+
+Then finally write the netlist using,
+
+```bash
+write_verilog -noattr ~/Documents/Verilog/Labs/vsdbabysoc_synth.v
+```
+![workflowsynth]()
+
+_Simulation_ :
+
+Ensure the following files are in the working directory (`Labs` in my case) before compilation.
+
+```
+vsdbabysoc_synth.v
+avsddac.v
+avsdpll.v
+primitives.v
+sky130_fd_sc_hd.v
+```
+
+this is done using,
+
+```bash
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsddac.v .
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsdpll.v .
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model/sky130_fd_sc_hd.v .
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model/primitives.v .
+```
+
+
+Compilation of the netlist with the testbench must be done, of course through `iverilog` using the following command,
+
+```bash
+iverilog -o ~/Documents/Verilog/Labs/vsdbabysoc_synth.vvp -DPOST_SYNTH_SIM -DFUNCTIONAL -DUNIT_DELAY=#1 -I ~/Documents/Verilog/Labs/VSDBabySoC/src/include -I ~/Documents/Verilog/Labs/VSDBabySoC/src/module -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model ~/Documents/Verilog/Labs/VSDBabySoC/src/module/testbench.v
+```
+
+Then, to view the waveform,
+
+```bash
+vvp vsdbabysoc_synth.vvp
+gtkwave post_synth_sim.vcd 
+```
+---
+
+_Workflow_ :
+
+![workflowpostsynth]()
+
+_Waveform:_
+
+![waveformpostsynth]()
+
+## Pre-Synthesis vs Post-Synthesis
+
+![comparison](comparison)
+
+**We see that there are no mismatches in functionality and the VSDBabySoC design works in its intended way after synthesis.**
 
 ---
 

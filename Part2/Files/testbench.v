@@ -6,7 +6,7 @@
    `include "rvmyth.v"
    `include "clk_gate.v"
 `elsif POST_SYNTH_SIM
-   `include "vsdbabysoc.synth.v"
+   `include "vsdbabysoc_synth.v"
    `include "avsddac.v"
    `include "avsdpll.v"
    `include "primitives.v"
