@@ -334,9 +334,13 @@ iverilog -o ~/Documents/Verilog/Labs/pre_synth_sim.vvp -DPRE_SYNTH_SIM \
 
 > [!Note]
 > -**o** `Output File (.vvp)`, to specify where the compiled file must be stored.
+
 > -**DPRE_SYNTH_SIM**, enable pre-synthesis simulation mode via macro (set inside the testbench).
+
 > -**I** `Source Directory`, to specify the directory where verilog files that contains submodules are stored.
+
 > **../testbench.v**, testbench file (drives the design).
+
 > Clearly specify the directories, and ensure that the mentioned files are actually present in those locations.
 
 To view the waveform,
