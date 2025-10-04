@@ -322,7 +322,7 @@ python3 -m sandpiper -i ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.tl
 
 This command stores the compiled `rvmyth.v` and `rvmyth_gen.v` files inside `~/Documents/Verilog/Labs/VSDBabySoC/src/module`.
 
-![sandpaper]()
+![sandpaper](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/sandpaper.png)
 
 Compilation of the source files are done through `iverilog` by using the following commands,
 
@@ -349,11 +349,11 @@ gtwave pre_synth_sim.vcd
 
 *Workflow* :
 
-![workflow]()
+![workflow](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/workflow.png)
 
 *Waveform* :
 
-![waveform]()
+![waveform](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveform.png)
 
 *Analysis* :
 
