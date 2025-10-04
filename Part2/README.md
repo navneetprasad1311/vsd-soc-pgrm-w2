@@ -13,15 +13,19 @@ This documentation covers the **hands-on functional modeling of the BabySoC**, f
      - `avsdpll.v` – PLL Module  
      - `rvmyth.tlv` – RISC-V CPU Core  
      - `vsdbabysoc.v` – Top-Level Integration Module  
-   - Testbench (`testbench.v`)  
-3. [Pre-synthesis Simulation of VSDBabySoC](#pre-synthesis-simulation-of-vsdbabysoc)  
+   - Testbench (`testbench.v`)
+3. [RTL Simulation of Modules](#rtl-simulation-of-modules)
+   - `avsddac.v`
+   - `avsdpll.v`
+   - `rvmyth.v`
+4. [Pre-synthesis Simulation of VSDBabySoC](#pre-synthesis-simulation-of-vsdbabysoc)  
    - Installing Dependencies  
    - Compiling `rvmyth.tlv` with Sandpiper  
    - Compiling Source Files with Icarus Verilog  
    - Viewing Waveforms with GTKWave
-4. [Signal Analysis](#signal-analysis)  
+5. [Signal Analysis](#signal-analysis)  
    - Observed Signals (`CLK`, `reset`, `OUT`, `RV_TO_DAC[9:0]`, `OUT (real)`)  
-5. [Summary](#summary)
+6. [Summary](#summary)
 
 ---
 
@@ -356,11 +360,11 @@ gtkwave tb_avsddac.vcd
 
 _Workflow_ :
 
-![workflowdac]()
+![workflowdac](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/workflowdac.png)
 
 _Waveform_:
 
-![waveformdac]()
+![waveformdac](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveformdac.png)
 
 _Analysis_ :
 
@@ -385,11 +389,11 @@ gtkwave tb_avsdpll.vcd
 
 _Workflow_ :
 
-![workflowpll]()
+![workflowpll](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/workflowpll.png)
 
 _Waveform_:
 
-![waveformpll]()
+![waveformpll](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveformpll.png)
 
 _Analysis_ :
 
@@ -415,11 +419,11 @@ gtkwave tb_rvmyth.vcd
 
 _Workflow_ :
 
-![workflowrvmyth]()
+![workflowrvmyth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/workflowrvmyth.png)
 
 _Waveform_:
 
-![waveformdac]()
+![waveformrvmyth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveformrvmyth.png)
 
 _Analysis_ :
 
