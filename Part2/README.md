@@ -303,18 +303,18 @@ Depending on the simulation setup, the generated waveform files `pre_synth_sim.v
 
 ---
 
-## Simulation of VSDBabySoC
+## Pre-synthesis Simulation of VSDBabySoC
 
-Before compilation of Verilog source files, the `rvmyth.tlv` file must be compiled to a `.v` file through **sandpaper**
+Before compiling the Verilog source files, the `rvmyth.tlv` file must first be converted to a `.v` file using **sandpiper**.
 
-Make sure to install other dependencies to ensure bugfree compilation by following the below commands.
+Ensure that all required dependencies are installed to avoid compilation issues:
 
 ```bash
 sudo apt install make python python3 python3-pip git iverilog gtkwave docker.io
 cd ~
 pip3 install pyyaml click sandpiper-saas
 ```
-and to run **sandpaper** and compile the `rvmyth.tlv` file, use
+To compile the `rvmyth.tlv` file with **sandpiper**, run:
 
 ```bash
 python3 -m sandpiper -i ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.tlv -o rvmyth.v  --bestsv --noline -p verilog --outdir ~/Documents/Verilog/Labs/VSDBabySoC/src/module
@@ -323,6 +323,8 @@ python3 -m sandpiper -i ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.tl
 This command stores the compiled `rvmyth.v` and `rvmyth_gen.v` files inside `~/Documents/Verilog/Labs/VSDBabySoC/src/module`.
 
 ![sandpaper](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/sandpaper.png)
+
+---
 
 Compilation of the source files are done through `iverilog` by using the following commands,
 
@@ -333,23 +335,20 @@ iverilog -o ~/Documents/Verilog/Labs/pre_synth_sim.vvp -DPRE_SYNTH_SIM \
 ```
 
 > [!Note]
-> -**o** `Output File (.vvp)`, to specify where the compiled file must be stored.
-
-> -**DPRE_SYNTH_SIM**, enable pre-synthesis simulation mode via macro (set inside the testbench).
-
-> -**I** `Source Directory`, to specify the directory where verilog files that contains submodules are stored.
-
-> **../testbench.v**, testbench file (drives the design).
-
+> -**o** `Output File (.vvp)`, to specify where the compiled file must be stored. \
+> -**DPRE_SYNTH_SIM**, enable pre-synthesis simulation mode via macro (set inside the testbench). \
+> -**I** `Source Directory`, to specify the directory where verilog files that contains submodules are stored. \
+> **../testbench.v**, testbench file (drives the design). \
 > Clearly specify the directories, and ensure that the mentioned files are actually present in those locations.
 
-To view the waveform,
+To view the _waveform_,
 
 ```bash
 cd ..
 vvp pre_synth_sim.vvp
 gtwave pre_synth_sim.vcd
 ```
+---
 
 *Workflow* :
 
@@ -359,7 +358,7 @@ gtwave pre_synth_sim.vcd
 
 ![waveform](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveform.png)
 
-*Analysis* :
+*Signal Analysis* :
 
 In this waveform, the following signals are observed:
 
