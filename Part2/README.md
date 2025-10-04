@@ -734,3 +734,9 @@ _Waveform:_
 VSDBabySoC is a compact system-on-chip that demonstrates core SoC fundamentals and functional modeling. It integrates a CPU, clock management via a PLL, and a DAC to showcase complete data flow from computation to output. The design emphasizes module integration, signal behavior, and timing, enabling simulation and verification of system functionality using Icarus Verilog and waveform analysis with GTKWave. Both pre- and post-synthesis simulations validate the design’s operation, illustrating how functional modeling bridges theoretical concepts with practical SoC implementation
 
 ---
+
+> [!Note]
+> Synthesised Netlist file is saved as `vsdbabysoc_synth.v` and not `vsdbabysoc.synth.v` as specified in `testbench.v` to have consistent and clear naming that aligns with common Verilog file conventions, where underscores are preferred over dots for readability and compatibility with build tools. \
+> The `testbench.v` is then edited in accordance with this change to ensure that the correct synthesized netlist file, `vsdbabysoc_synth.v`, is referenced during simulation and verification. \
+> I had to modify a few of the testbenches during the simulation of the modules to match the updated port names and connections. \
+> The modified testbenches are present in the `Files` directory.
