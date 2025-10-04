@@ -10,10 +10,10 @@ This documentation covers all the topics required to build a solid understanding
   
 1. [Objectives](#objectives)  
 2. [Part-wise Folders](#part-wise-folders)
-    - [Part 1](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/README.md)
-    - [Part 2](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/README.md)
-2. [Acknowledgements](#acknowledgements)  
-3. [Contributor](#contributor)
+    - [Part 1](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1)
+    - [Part 2](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2)
+3. [Acknowledgements](#acknowledgements)  
+4. [Contributor](#contributor)
 
 ---
 
@@ -23,7 +23,7 @@ This documentation covers all the topics required to build a solid understanding
 
 - Gain hands-on experience with functional modeling of the BabySoC using Verilog.
 
-- To simulate and verify SoC behavior using Icarus Verilog and GTKWave.
+- Simulate and verify SoC behavior using Icarus Verilog and GTKWave
 
 - Understand the workflow from instruction execution to DAC output and waveform analysis.
 
@@ -33,9 +33,9 @@ This documentation covers all the topics required to build a solid understanding
 
 ## Part-wise Folders:
 
-- [Part 1](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/tree/main/Part1) - Fundamentals of BabySoC.
+- [Part 1](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/tree/main/Part1/README.md) - Fundamentals of BabySoC.
 
-- [Part 2](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/tree/main/Part2) - Hands-on Functional Modelling of VSDBabySoC.
+- [Part 2](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/tree/main/Part2/README.md) - Hands-on Functional Modelling of VSDBabySoC.
 
 ---
 

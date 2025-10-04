@@ -466,7 +466,7 @@ To view the _waveform_,
 ```bash
 cd ..
 vvp pre_synth_sim.vvp
-gtwave pre_synth_sim.vcd
+gtkwave pre_synth_sim.vcd
 ```
 ---
 
@@ -505,7 +505,7 @@ these are `sp_verilog.vh`, `sandpiper.vh`, `sandpiper_gen.vh`
 
 `sandpiper_gen.vh` – contains tool-generated parameters and configuration values  
 
-These files need to be present in the working directory of `yosys` inorder to ensure error free synthesis. This is done using the following commands,
+These files need to be present in the working directory of `yosys` in order to ensure error free synthesis. This is done using the following commands,
 
 ```bash
 cd ~/Documents/Verilog/Labs/VSDBabySoC
