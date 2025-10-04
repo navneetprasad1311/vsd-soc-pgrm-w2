@@ -2,21 +2,49 @@
 
 `28/09/2025` to `04/10/2025`
 
+This documentation covers all the topics required to build a solid understanding of SoC fundamentals and practice functional modelling of the BabySoC using simulation tools (Icarus Verilog & GTKWave). 
+
+---
+
+## Table of Contents
+  
+1. [Objectives](#objectives)  
+2. [Part-wise Folders](#part-wise-folders)
+    - [Part 1](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part1/README.md)
+    - [Part 2](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/README.md)
+2. [Acknowledgements](#acknowledgements)  
+3. [Contributor](#contributor)
+
+---
 
 ## Objectives
 
-- Review RVMYTH CPU instruction set and verify all basic arithmetic, logic, and control instructions.
-- Simulate CPU-memory-peripheral interactions using Verilog testbenches.
-- Analyze waveform outputs with GTKWave to validate data flow.
-- Begin pre-tapeout steps, including timing constraints and synthesis checks.
-- Document and log all simulation results for functional verification.
+- Develop a solid understanding of VSDBabySoC fundamentals, including its CPU, memory, and peripheral architecture.
 
+- Gain hands-on experience with functional modeling of the BabySoC using Verilog.
 
+- To simulate and verify SoC behavior using Icarus Verilog and GTKWave.
+
+- Understand the workflow from instruction execution to DAC output and waveform analysis.
+
+- Prepare for pre-tapeout steps, including timing verification, synthesis checks, and netlist preparation.
+
+---
+
+## Part-wise Folders:
+
+- [Part 1](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/tree/main/Part1) - Fundamentals of BabySoC.
+
+- [Part 2](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/tree/main/Part2) - Hands-on Functional Modelling of VSDBabySoC.
+
+---
 
 ## Acknowledgements
 
 Special thanks to Mr. [Kunal Ghosh](https://in.linkedin.com/in/kunal-ghosh-vlsisystemdesign-com-28084836) and VSD team for providing guidance and resources.  
 Gratitude to the SKY130 PDK community and open-source tools contributors like Yosys, Icarus Verilog, and GTKWave.
+
+---
 
 ## Contributor
   Navneet Prasad ([LinkedIn](https://linkedin.com/in/navneetprasad1311)) 
@@ -24,3 +52,5 @@ Gratitude to the SKY130 PDK community and open-source tools contributors like Yo
 ---
 
 Previous week, Week 1 (Simulation, Synthesis & Optimisation) : [Week 1 Repository](https://github.com/navneetprasad1311/vsd-soc-pgrm-w1)
+
+---
