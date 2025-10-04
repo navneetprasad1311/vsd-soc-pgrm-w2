@@ -550,6 +550,7 @@ abc -liberty ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025
 ```
 
 > [!TIP]
+>
 
 | Command        | Purpose                                                                     |
 | -------------- | --------------------------------------------------------------------------- |
@@ -572,6 +573,7 @@ clean -purge
 rename -enumerate
 ```
 > [!TIP]
+>
 
 - flatten          : Remove hierarchy, make a flat netlist
 - setundef -zero   : Replace undefined signals with 0
@@ -583,6 +585,7 @@ To check the statistics of the synthesised design run,
 ```bash
 stat
 ```
+Statistics:
 
 <pre>
 
@@ -684,6 +687,16 @@ Compilation of the netlist with the testbench must be done, of course through `i
 ```bash
 iverilog -o ~/Documents/Verilog/Labs/vsdbabysoc_synth.vvp -DPOST_SYNTH_SIM -DFUNCTIONAL -DUNIT_DELAY=#1 -I ~/Documents/Verilog/Labs/VSDBabySoC/src/include -I ~/Documents/Verilog/Labs/VSDBabySoC/src/module -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model ~/Documents/Verilog/Labs/VSDBabySoC/src/module/testbench.v
 ```
+
+> [!Note]
+>
+
+| Command / Flag     | Description                                                                                   |
+|------------------  | --------------------------------------------------------------------------------------------- |
+| `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode.                  |
+| `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode.                          |
+| `-DUNIT_DELAY=#1`  | Defines the macro `UNIT_DELAY` with value `#1` for unit delay parameterization in simulation. |
+
 
 Then, to view the waveform,
 
