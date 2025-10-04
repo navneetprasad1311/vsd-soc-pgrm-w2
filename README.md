@@ -42,8 +42,7 @@ This documentation covers all the topics required to build a solid understanding
 ## Acknowledgements
 
 Special thanks to Mr. [Kunal Ghosh](https://in.linkedin.com/in/kunal-ghosh-vlsisystemdesign-com-28084836) and VSD team for providing guidance and resources.  
-Gratitude to the SKY130 PDK community and open-source tools contributors like Yosys, Icarus Verilog, and GTKWave.
-
+Gratitude to the SKY130 PDK community, Contributors of VSDBabySoC repository and open-source tools contributors like Yosys, Icarus Verilog, and GTKWave.
 ---
 
 ## Contributor

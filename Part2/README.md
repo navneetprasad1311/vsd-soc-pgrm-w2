@@ -711,6 +711,8 @@ _Waveform:_
 
 ![waveformpostsynth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveformpostsynth.png)
 
+---
+
 ## Pre-Synthesis vs Post-Synthesis Simulation
 
 ![comparison](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/comparison.png)
