@@ -413,6 +413,7 @@ _Analysis_ :
 ```bash
 iverilog -o ~/Documents/Verilog/Labs/rvmyth.vvp -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/include -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/module  ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.v ~/Documents/Verilog/Labs/tb_rvmyth.v ~/Documents/Verilog/Labs/VSDBabySoC/src/module/clk_gate.v
 ```
+
 > Testbench ported from [rvmyth](https://github.com/kunalg123/rvmyth/blob/main/tb_mythcore_test.v) repository
 
 ```bash
@@ -654,7 +655,7 @@ Then finally write the netlist using,
 ```bash
 write_verilog -noattr ~/Documents/Verilog/Labs/vsdbabysoc_synth.v
 ```
-![workflowsynth]()
+![workflowsynth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/workflowsynth.png)
 
 _Simulation_ :
 
@@ -694,15 +695,15 @@ gtkwave post_synth_sim.vcd
 
 _Workflow_ :
 
-![workflowpostsynth]()
+![workflowpostsynth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/workflowpostsynth.png)
 
 _Waveform:_
 
-![waveformpostsynth]()
+![waveformpostsynth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveformpostsynth.png)
 
 ## Pre-Synthesis vs Post-Synthesis
 
-![comparison](comparison)
+![comparison](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/comparison.png)
 
 **We see that there are no mismatches in functionality and the VSDBabySoC design works in its intended way after synthesis.**
 
