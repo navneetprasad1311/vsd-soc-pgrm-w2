@@ -318,8 +318,6 @@ Depending on the simulation setup, the generated waveform files `pre_synth_sim.v
 
 ---
 
-## Pre-synthesis Simulation of VSDBabySoC
-
 Before compiling the Verilog source files, the `rvmyth.tlv` file must first be converted to a `.v` file using **sandpiper**.
 
 Ensure that all required dependencies are installed to avoid compilation issues:
@@ -340,6 +338,97 @@ This command stores the compiled `rvmyth.v` and `rvmyth_gen.v` files inside `~/D
 ![sandpaper](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/sandpaper.png)
 
 ---
+
+## RTL Simulation of Modules
+
+**`avsddac.v`**
+
+```bash
+iverilog -o ~/Documents/Verilog/Labs/avsddac.vvp ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsddac.v ~/Documents/Verilog/Labs/tb_avsddac.v
+```
+> Testbench ported from [rvmyth_avsddac_interface](https://github.com/vsdip/rvmyth_avsddac_interface/blob/main/iverilog/Pre-synthesis/avsddac_tb_test.v) repository
+
+```bash
+cd ~/Documents/Verilog/Labs
+vvp avsddac.vvp
+gtkwave tb_avsddac.vcd
+```
+
+_Workflow_ :
+
+![workflowdac]()
+
+_Waveform_:
+
+![waveformdac]()
+
+_Analysis_ :
+
+- D = 3FE -> Dext = 1022
+- OUT = VREFL + ( (Dext​ / 1023)  * (VREFH−VREFL) )
+- OUT = 0 + (1022 / 1023) * 3.3 ≈ 3.2968 V
+- Waveform: OUT ≈ 3.297 V while D stays at 3FE
+- Demonstrates DAC step behavior near full scale
+
+**`avsdpll.v`**
+
+```bash
+iverilog -o ~/Documents/Verilog/Labs/avsdpll.vvp ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsdpll.v ~/Documents/Verilog/Labs/tb_avsdpll.v
+```
+> Testbench ported from [rvmyth_avsdpll_interface](https://github.com/vsdip/rvmyth_avsdpll_interface/blob/main/verilog/pll_tb.v) repository
+
+```bash
+cd ~/Documents/Verilog/Labs
+vvp avsdpll.vvp
+gtkwave tb_avsdpll.vcd
+```
+
+_Workflow_ :
+
+![workflowpll]()
+
+_Waveform_:
+
+![waveformpll]()
+
+_Analysis_ :
+
+- REF: input clock, slower reference signal
+- Each rising edge of REF recalculates refpd (REF period)
+- CLK: output clock, toggles continuously when ENb_VCO = 1
+- CLK frequency = 8 × REF frequency (since period = refpd / 8)
+- When ENb_VCO = 0 → CLK forced to 0
+- When ENb_VCO = X → CLK becomes X (unknown)
+
+**`rvmyth.v`**
+
+```bash
+iverilog -o ~/Documents/Verilog/Labs/rvmyth.vvp -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/include -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/module  ~/Documents/Verilog/Labs/VSDBabySoC/src/module/rvmyth.v ~/Documents/Verilog/Labs/tb_rvmyth.v ~/Documents/Verilog/Labs/VSDBabySoC/src/module/clk_gate.v
+```
+> Testbench ported from [rvmyth](https://github.com/kunalg123/rvmyth/blob/main/tb_mythcore_test.v) repository
+
+```bash
+cd ~/Documents/Verilog/Labs
+vvp rvmyth.vvp
+gtkwave tb_rvmyth.vcd
+```
+
+_Workflow_ :
+
+![workflowrvmyth]()
+
+_Waveform_:
+
+![waveformdac]()
+
+_Analysis_ :
+
+- CLK     : Provides timing for the core.
+- RESETn  : Initializes core to known state.
+- OUT     : 10-bit Register output.
+
+
+## Pre-synthesis Simulation of VSDBabySoC
 
 Compilation of the source files are done through `iverilog` by using the following commands,
 
