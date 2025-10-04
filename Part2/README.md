@@ -549,9 +549,6 @@ opt
 abc -liberty ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
 ```
 
-> [!TIP]
->
-
 | Command        | Purpose                                                                     |
 | -------------- | --------------------------------------------------------------------------- |
 | `strash`       | Structural hashing — converts logic network to an AIG (And-Inverter Graph). |
@@ -573,7 +570,6 @@ clean -purge
 rename -enumerate
 ```
 > [!TIP]
-
 > flatten          : Remove hierarchy, make a flat netlist
 
 > setundef -zero   : Replace undefined signals with 0
@@ -691,7 +687,6 @@ iverilog -o ~/Documents/Verilog/Labs/vsdbabysoc_synth.vvp -DPOST_SYNTH_SIM -DFUN
 ```
 
 > [!Note]
-
 > `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode.    
 
 > `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode.       
