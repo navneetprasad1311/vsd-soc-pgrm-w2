@@ -25,7 +25,13 @@ This documentation covers the **hands-on functional modeling of the BabySoC**, f
    - Viewing Waveforms with GTKWave
 5. [Signal Analysis](#signal-analysis)  
    - Observed Signals (`CLK`, `reset`, `OUT`, `RV_TO_DAC[9:0]`, `OUT (real)`)  
-6. [Summary](#summary)
+6. [Post-synthesis Simulation of VSDBabySoC](#post-synthesis-simulation-of-vsdbabysoc)
+   - Synthesis Steps
+   - Optimization & Technology Mapping
+   - Netlist Simulation
+   - Waveform Analysis
+7. [Pre-Synthesis vs Post-Synthesis Simulation](#pre-synthesis-vs-post-synthesis-simulation)
+8. [Summary](#summary)
 
 ---
 
@@ -705,7 +711,7 @@ _Waveform:_
 
 ![waveformpostsynth](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveformpostsynth.png)
 
-## Pre-Synthesis vs Post-Synthesis
+## Pre-Synthesis vs Post-Synthesis Simulation
 
 ![comparison](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/comparison.png)
 
